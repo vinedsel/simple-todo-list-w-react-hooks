@@ -9,7 +9,7 @@ const InputTodo = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.addTodoprops(title);
+    props.addTodoProps(title);
     setTitle("");
   };
 
