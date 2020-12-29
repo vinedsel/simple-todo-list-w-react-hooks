@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 
 const InputTodo = props => {
-  const [title, setTitle] = useState("");
+  const [inputText, setInputText] = useState({
+    title: "",
+  });
 
   const onChange = e => {
-    setTitle(e.target.value);
+    setInputText({
+      ...inputText,
+      [e.target.value]: e.target.value,
+    });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.addTodoProps(title);
-    setTitle("");
+    props.addTodoProps(inputText.title);
+    setInputText({
+      title: "",
+    });
   };
 
   return (
@@ -19,10 +26,15 @@ const InputTodo = props => {
         type="text"
         className="input-text"
         placeholder="Add Todo..."
-        value={title}
+        value={inputText.title}
         name="title"
         onChange={onChange}
       />
+      <input
+        type="submit"
+        className="input-submit"
+        value="Submit"
+      />  
     </form>
   );
 };
