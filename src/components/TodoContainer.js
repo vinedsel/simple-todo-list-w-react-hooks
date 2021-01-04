@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodosList from "./TodosList";
 import Header from "./Header";
 import InputTodo from "./InputTodo";
@@ -40,6 +40,12 @@ const TodoContainer = props => {
     setTodos([...todos, newTodo]);
   };
 
+  useEffect(() => {
+    console.log("Test Run");
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then(response => setTodos(response.data))
+  }, []);
  
   return (
     <div className="container">
